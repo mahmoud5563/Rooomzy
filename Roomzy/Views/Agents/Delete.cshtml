@@ -1,0 +1,17 @@
+﻿@model Roomzy.Models.Agents
+
+<h1>Delete Agent</h1>
+
+<form asp-action="Delete" method="post">
+    <input type="hidden" asp-for="Id" />
+    <div class="alert alert-warning">
+        <p>Are you sure you want to delete this agent?</p>
+        <p>
+            <strong>@Model.First_Name @Model.Last_Name</strong>
+        </p>
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-danger">Delete</button>
+        <a class="btn btn-secondary" asp-action="List">Cancel</a>
+    </div>
+</form>

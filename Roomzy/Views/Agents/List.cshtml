@@ -1,0 +1,42 @@
+﻿@model IEnumerable<Roomzy.Models.Agents>
+
+@{
+    ViewData["Title"] = "Agents List";
+}
+
+<h1>Agents List</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>User Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Address</th>
+            <th>Remark</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var agent in Model)
+        {
+            <tr>
+                <td>@agent.Id</td>
+                <td>@agent.First_Name</td>
+                <td>@agent.Last_Name</td>
+                <td>@agent.User_Name</td>
+                <td>@agent.User_Email</td>
+                <td>@agent.User_Phone</td>
+                <td>@agent.User_Address</td>
+                <td>@agent.Remark</td>
+                <td>
+                    <a class="btn btn-primary" asp-action="Edit" asp-route-id="@agent.Id">Edit</a>
+                    <a class="btn btn-danger" asp-action="Delete" asp-route-id="@agent.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

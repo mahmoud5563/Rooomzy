@@ -1,0 +1,73 @@
+﻿@model Roomzy.Models.AddAgentsVeiwModel
+
+@{
+    ViewData["Title"] = "Edit Agent";
+}
+
+<h1>Edit Agent</h1>
+
+<form asp-action="Edit" method="post">
+    <input type="hidden" asp-for="ID" />
+
+    <div class="form-group">
+        <label>ID</label>
+        <p class="form-control-static">@Model.ID</p>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="First_Name"></label>
+        <input asp-for="First_Name" class="form-control" />
+        <span asp-validation-for="First_Name" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Last_Name"></label>
+        <input asp-for="Last_Name" class="form-control" />
+        <span asp-validation-for="Last_Name" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="User_Name"></label>
+        <input asp-for="User_Name" class="form-control" />
+        <span asp-validation-for="User_Name" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="User_Password"></label>
+        <input asp-for="User_Password" type="password" class="form-control" />
+        <span asp-validation-for="User_Password" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="User_Email"></label>
+        <input asp-for="User_Email" type="email" class="form-control" />
+        <span asp-validation-for="User_Email" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="User_Phone"></label>
+        <input asp-for="User_Phone" type="tel" class="form-control" />
+        <span asp-validation-for="User_Phone" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="User_Address"></label>
+        <input asp-for="User_Address" class="form-control" />
+        <span asp-validation-for="User_Address" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Remark"></label>
+        <textarea asp-for="Remark" class="form-control"></textarea>
+        <span asp-validation-for="Remark" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Save</button>
+    </div>
+</form>
+
+@section Scripts {
+    <script src="~/lib/jquery-validation/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}
