@@ -1,7 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Roomzy.Models;
 using System;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Roomzy.Controllers
@@ -53,10 +54,18 @@ namespace Roomzy.Controllers
 
         // GET: Agents/List
         [HttpGet]
-        public async Task<IActionResult> List()
+        public async Task<IActionResult> List(string searchTerm = "")
         {
             // Retrieve only non-deleted agents
-            var agents = await dbContext.Agents.Where(a => !a.Deleted).ToListAsync();
+            var agentsQuery = dbContext.Agents.Where(a => !a.Deleted);
+
+            if (!string.IsNullOrEmpty(searchTerm))
+            {
+                // Filter by phone number
+                agentsQuery = agentsQuery.Where(a => a.User_Phone.Contains(searchTerm));
+            }
+
+            var agents = await agentsQuery.ToListAsync();
             return View(agents);
         }
 
