@@ -1,10 +1,20 @@
-﻿@model IEnumerable<Roomzy.Models.Agents>
+@model IEnumerable<Roomzy.Models.Agents>
 
 @{
     ViewData["Title"] = "Agents List";
+    // Correctly access the search term from HttpContext in Razor views
+    var searchTerm = Context.Request.Query["searchTerm"].ToString();
 }
 
 <h1>Agents List</h1>
+
+<!-- Search Form -->
+<form asp-action="List" method="get" class="form-inline mb-3">
+    <div class="form-group mr-2">
+        <input type="text" name="searchTerm" class="form-control" placeholder="Search by phone number" value="@searchTerm" />
+    </div>
+    <button type="submit" class="btn btn-primary">Search</button>
+</form>
 
 <table class="table">
     <thead>
